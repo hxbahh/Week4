@@ -1,0 +1,86 @@
+function taskA() {
+  return new Promise(resolve => setTimeout(() => resolve(" A done"), 2000));
+}
+
+function taskB() {
+  return new Promise(resolve => setTimeout(() => resolve(" B done"), 1000));
+}
+
+function taskC() {
+  return new Promise(resolve => setTimeout(() => resolve(" C done"), 3000));
+}
+
+// Task: Use Promise.all() to run all 3 tasks and log all their results together.
+//Log the result using .then()
+//Handle any error using .catch()
+
+Promise.all([taskA(),taskB(),taskC()])
+.then(val=>{
+    console.log(val)
+})
+.catch(err=>{
+    console.log(err)
+})
+
+function fastTask() {
+  return new Promise(resolve => setTimeout(() => resolve("⚡ Fastest!"), 1000));
+}
+
+function mediumTask() {
+  return new Promise(resolve => setTimeout(() => resolve("⏱️ Medium"), 2000));
+}
+
+function slowTask() {
+  return new Promise(resolve => setTimeout(() => resolve("🐢 Slow"), 3000));
+}
+
+// Task: Use Promise.race() to find and log the result of the fastest task
+//Use Promise.race([...])
+//Log the first result to settle using .then()
+//Handle any rejection using .catch()
+Promise.race([fastTask(),mediumTask(),slowTask()])
+.then(val=>console.log(val))
+.catch(err=>console.log(err))
+
+const p1 = new Promise((_, reject) =>
+  setTimeout(() => reject(" p1 failed"), 1000)
+);
+
+const p2 = new Promise((resolve) =>
+  setTimeout(() => resolve(" p2 success"), 3000)
+);
+
+const p3 = new Promise((_, reject) =>
+  setTimeout(() => reject(" p3 failed"), 2000)
+);
+
+//use promise.any()
+Promise.any([p1, p2, p3])
+  .then((result) => {
+    console.log(" First success:", result);
+  })
+  .catch((error) => {
+    console.log("All failed:", error.errors); 
+  });
+
+
+  const p1 = new Promise((_, reject) =>
+  setTimeout(() => reject("p1 failed"), 1000)
+);
+
+const p2 = new Promise((_, reject) =>
+  setTimeout(() => reject("p2 failed"), 2000)
+);
+
+const p3 = new Promise((_, reject) =>
+  setTimeout(() => reject("p3 failed"), 3000)
+);
+
+// Task: Use Promise.any() and handle the error if all fail
+Promise.any([p1,p2,p3])
+.then(val=>console.log(val))
+.catch(error=>console.log("All failed ",error.errors))
+
+
+
+
