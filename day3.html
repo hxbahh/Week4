@@ -1,0 +1,278 @@
+<!-- <!-- Timer using date object
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Countdown</title>
+</head>
+<body>
+
+<h2>Countdown to New Year 2026 🎉</h2>
+<p id="countdown" style="font-size: 20px;"></p>
+
+<script>
+  const countdownElement = document.getElementById("countdown");
+
+  // Target Date
+  const targetDate = new Date("January 1, 2026 00:00:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      countdownElement.innerHTML = "🎊 Happy New Year 2026!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
+
+    countdownElement.innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+  }
+
+  // Start countdown
+  updateCountdown(); // first run
+  const timer = setInterval(updateCountdown, 1000); // update every second
+</script>
+
+</body>
+</html>
+
+
+<!--scrollx scrolly
+<!DOCTYPE html>
+ <html>
+<head>
+  <title>Scroll Demo</title>
+</head>
+<body style="height: 2000px; width: 2000px;">
+  <h1 style="position: fixed; top: 10px; left: 10px; background: yellow;">Scroll the page</h1>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      console.log("ScrollX:", window.scrollX);
+      console.log("ScrollY:", window.scrollY);
+    });
+  </script>
+</body>
+</html>
+
+
+<!--ScrollTo(x,y)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>scrollTo Example</title>
+</head>
+<body style="height: 2000px;">
+
+  <h1 style="position: fixed; top: 10px; left: 10px; background: yellow;">Click the button to scroll</h1>
+
+  <button onclick="window.scrollTo(0, 1000)">
+    Scroll Down 1000px
+  </button>
+
+  <button onclick="window.scrollTo(0, 0)" style="position: fixed; top: 100px; left: 10px;">
+    Scroll to Top
+  </button>
+
+</body>
+</html>
+
+
+scroll(dx,dy)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>scrollBy Example</title>
+</head>
+<body style="height: 2000px;">
+
+  <h1 style="position: fixed; top: 10px; left: 10px; background: yellow;">
+    scrollBy Example
+  </h1>
+
+  <button onclick="window.scrollBy(0, 200)" style="position: fixed; top: 60px; left: 10px;">
+    Scroll Down 200px
+  </button>
+
+  <button onclick="window.scrollBy(0, -200)" style="position: fixed; top: 100px; left: 10px;">
+    Scroll Up 200px
+  </button>
+
+</body>
+</html>
+
+
+location
+<!DOCTYPE html>
+<html>
+<head>
+  <title>window.location Example</title>
+</head>
+<body>
+  <button onclick="showLocation()">Show window.location</button>
+
+  <script>
+    function showLocation() {
+      console.log(window.location);
+      alert("Check the console for the full location object");
+    }
+  </script>
+</body>
+</html>
+
+location href
+<!DOCTYPE html>
+<html>
+<head>
+  <title>location.href Example</title>
+</head>
+<body>
+  <button onclick="showHref()">Show Current URL</button>
+  <button onclick="goToGoogle()">Go to Google</button>
+
+  <script>
+    function showHref() {
+      alert("Current URL: " + location.href);
+    }
+
+    function goToGoogle() {
+      location.href = "https://google.com"; // Redirect
+    }
+  </script>
+</body>
+</html>
+
+location reload
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="reload()">click</button>
+    <script>
+        function reload(){
+            location.reload()
+        }
+    </script>
+</body>
+</html>
+
+location hostname
+<!DOCTYPE html>
+<html>
+<head>
+  <title>location.hostname Example</title>
+</head>
+<body>
+  <button onclick="showHostname()">Show Hostname</button>
+
+  <script>
+    function showHostname() {
+      alert("Hostname: " + location.hostname);
+    }
+  </script>
+</body>
+</html>
+
+location assign
+<!DOCTYPE html>
+<html>
+<head>
+  <title>location.assign Example</title>
+</head>
+<body>
+  <button onclick="goToWikipedia()">Go to Wikipedia</button>
+
+  <script>
+    function goToWikipedia() {
+      location.assign("https://wikipedia.org");
+    }
+  </script>
+</body>
+</html>
+
+loaction replace
+<!DOCTYPE html>
+<html>
+<head>
+  <title>location.replace Example</title>
+</head>
+<body>
+  <button onclick="replaceWithOpenAI()">Replace with OpenAI</button>
+
+  <script>
+    function replaceWithOpenAI() {
+      location.replace("https://openai.com");
+    }
+  </script>
+</body>
+</html>
+
+append()
+Accepts multiple arguments: strings, elements, or both.
+More flexible than appendChild().
+Returns nothing-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const div = document.createElement("div");
+const span = document.createElement("span");
+span.textContent = "I'm a span";
+
+div.append("Hello ", span, " World!");  // Text + element
+document.body.append(div);
+
+    </script>
+</body>
+</html>
+
+<!--appendChild()
+Only accepts one node at a time.
+The node must be a Node object, not a string.
+Returns the appended node.-->
+<!--<script>
+const p = document.createElement("p");
+p.textContent = "Hello from appendChild!";
+document.body.appendChild(p);  // Adds <p> to end of <body>
+</script>
+
+
+removeChild
+<script>
+const btn = document.createElement("button");
+btn.textContent = "Click to remove me";
+document.body.appendChild(btn);
+
+btn.addEventListener("click", () => {
+  document.body.removeChild(btn);     //returns
+});
+</script>
+
+
+Element.remove()
+  <button id="removeBtn">Remove Me</button>
+
+<script>
+  const btn = document.getElementById("removeBtn");
+
+  btn.addEventListener("click", () => {
+    btn.remove();  //  Removes the button itself and return undefined
+  });
+</script>  -->
