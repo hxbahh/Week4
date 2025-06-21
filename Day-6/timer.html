@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text" style="border: 2px solid black; padding: 10px; text-align: center;">
+    <p id="para" style="padding-top: 10px; margin-left: 75px;"></p>
+    <script>
+        const input=document.getElementById('input')
+        const para=document.getElementById('para')
+        function debounce(func,delay){
+            let timer;
+            return ()=>{
+                clearTimeout(timer)
+                timer=setTimeout(func,delay)
+            }
+            }
+         function afterDelay(){
+                let now=new Date();
+                let end=now.getTime()+input.value*1000
+                let timee=setInterval(()=>{
+                    let again=new Date()
+                    let sub=Math.round((end-again.getTime())/1000)
+                     if(sub<=0){
+                clearInterval(timee)
+                para.textContent="Done!"
+                }else{
+                    para.textContent=sub
+                }
+                },1000)
+            }
+        const count=debounce(afterDelay,1000)
+            input.addEventListener('input',count)
+    </script>
+</body>
+</html>

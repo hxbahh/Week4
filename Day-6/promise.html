@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise Fetch Simulation</title>
+</head>
+<body>
+  <button id="fetchBtn" style="border: 2px solid black; padding: 5px;">Fetch Data</button>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById('output');
+    const button = document.getElementById('fetchBtn');
+    
+   function promise(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            let success=Math.random()>0.5
+            if(success){
+                resolve('Fetched Data Successfully!')
+            }else{
+                reject('Fetching Data Failed!!!')
+            }
+        },2000)
+    })
+   }
+   
+   button.addEventListener('click',()=>{
+   output.textContent="Loading..."
+   promise()
+   .then((val)=>output.textContent=val)
+   .catch((val)=>output.textContent=val)
+   })
+   </script>
+</body>
+</html>

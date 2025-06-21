@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Which Korean Band is more famous</h1>
+  <input id="input" type="text" placeholder="Enter your answer" style="border: 2px solid black; padding: 5px;" >
+  <button id="btn" type="submit">Submit</button>
+  <p id="para"></p>
+
+  <script>
+    (function(){
+    
+    const correctAnswer='BTS'
+    function answer(userAnswer){
+      return userAnswer.trim().toUpperCase()===correctAnswer.toUpperCase()
+    }
+    result()
+    function result(){
+      const btn=document.getElementById('btn')
+    const input=document.getElementById('input')
+    const para=document.getElementById('para')
+     btn.addEventListener('click',()=>{
+       answer(input.value)?para.textContent="Correct Answer💯":para.textContent="Wrong Answer❌"
+    })
+     }
+    
+  })();
+   
+  </script>
+</body>
+</html>

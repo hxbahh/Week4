@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM + Bubbling + Throttle</title>
+  </style>
+</head>
+<body>
+  <div class="container" style="border: 2px solid black;">
+    <div class="child">Click Me</div>
+  </div>
+  <script>
+    const container = document.getElementsByClassName('container');
+    const child = document.getElementsByClassName('child');
+    document.querySelector('.container').addEventListener('click', function(event) {
+      console.log("Container clicked (bubbled from):", event.target.className);
+    });
+    document.querySelector('.child').addEventListener('click', function(event) {
+      const parent = event.target.parentElement;
+      console.log("Parent element class:", parent.className);
+    });
+    function throttle(fn, limit) {
+      let inThrottle;
+      return function () {
+        if (!inThrottle) {
+          fn.apply(this, arguments);
+          inThrottle = true;
+          setTimeout(() => (inThrottle = false), limit);
+        }
+      };
+    }
+    window.addEventListener(
+      'scroll',
+      throttle(() => {
+        console.log("Throttled Scroll:", window.scrollY);
+      }, 1000)
+    );
+  </script>
+</body>
+</html>
